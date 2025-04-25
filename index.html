@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Match Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f5f5f5;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        input, select {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background: #007bff;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>IPL Match Predictor</h1>
+    <form method="POST" action="/predict">
+        <label>Venue:</label>
+        <select name="venue">
+            <option>MI</option>
+            <option>CSK</option>
+            <option>RCB</option>
+            <option>KKR</option>
+            <option>GT</option>
+            <option>DC</option>
+            <option>PBKS</option>
+            <option>SRH</option>
+            <option>RR</option>
+            <option>OUT</option>
+            <!-- Add more if needed -->
+        </select>
+
+        <label>Team A</label>
+        <select name="team_a">
+            <option>MI</option>
+            <option>CSK</option>
+            <option>RCB</option>
+            <option>KKR</option>
+            <option>GT</option>
+            <option>DC</option>
+            <option>PBKS</option>
+            <option>SRH</option>
+            <option>RR</option>
+            <!-- Add all teams -->
+        </select>
+
+        <label>Team B</label>
+        <select name="team_b">
+            <option>MI</option>
+            <option>CSK</option>
+            <option>RCB</option>
+            <option>KKR</option>
+            <option>GT</option>
+            <option>DC</option>
+            <option>PBKS</option>
+            <option>SRH</option>
+            <option>RR</option>
+            <!-- Add all teams -->
+        </select>
+
+        <label>Toss Decision:</label>
+        <select name="toss_decision">
+            <option>BAT</option>
+            <option>FIELD</option>
+        </select>
+
+        <label>Toss Winner:</label>
+        <select name="toss_winner">
+            <option>MI</option>
+            <option>CSK</option>
+            <option>RCB</option>
+            <option>KKR</option>
+            <option>GT</option>
+            <option>DC</option>
+            <option>PBKS</option>
+            <option>SRH</option>
+            <option>RR</option>
+            <!-- Add all teams -->
+        </select>
+
+        <label>Pitch Type:</label>
+        <select name="pitch_type">
+            <option>BAT</option>
+            <option>BALL</option>
+        </select>
+
+        <label>Powerplay Score:</label>
+        <input type="number" name="powerplay_score" step="any" required>
+
+        <label>Powerplay Wickets:</label>
+        <input type="number" name="powerplay_wickets" required>
+
+        <label>First 10 Overs Runs:</label>
+        <input type="number" name="first10_runs" step="any" required>
+
+        <label>First 10 Overs Wickets:</label>
+        <input type="number" name="first10_wickets" required>
+
+        <label>Boundaries in First 10 Overs:</label>
+        <input type="number" name="boundaries_10" required>
+
+        <label>Run Rate in First 10 Overs:</label>
+        <input type="number" name="runrate_10" step="any" required>
+
+        <label>Dot Ball Percentage in First 10 Overs:</label>
+        <input type="number" name="dot_percent_10" step="any" required>
+
+        <label>Time of Match:</label>
+        <select name="time_of_day">
+            <option>N</option>
+            <option>A</option>
+        </select>
+
+        <label>position of man of man of the match:</label>
+        <select name="mvp">
+            <option>BAT</option>
+            <option>BALL</option>
+        </select>
+
+        <input type="submit" value="Predict Outcome">
+    </form>
+
+    {% if prediction is not none %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
